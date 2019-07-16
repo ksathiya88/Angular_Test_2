@@ -1,0 +1,34 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <!-- <h1> -->
+  <!-- <input type="text" [value]="title" (input)="setInput($event)" /> -->
+  <!-- <input type="text" [value]="title" (input)="title=$event.target.value" /> -->
+  <input type="text" [(ngModel)]="title" />
+
+  <!-- <input [ngModel]="title" (ngModelChange)="title = $event" />
+
+    <div>Welcome to {{ title }}!</div>
+    <div>
+      <button (click)="printHello()">Submit</button>
+    </div> -->
+  <!-- </h1> -->
+  <!-- Structural Directive -->
+  Array:{{ arrayElem }}
+  <!-- ngFor -->
+  <div *ngFor="let elem of arrayElem">
+    <!-- <h2>{{ elem }}</h2> -->
+    <!-- <input [(ngModel)]="elem" /> -->
+    <input value="{{ elem }}" />
+    {{ elem }}
+  </div>
+  <!-- ngIf -->
+  <div *ngIf="title == 'my-app'">
+    <h2>Sample Content</h2>
+  </div>
+  <!-- Attribute Directive -->
+  <!-- ngStyle -->
+  <h1 [ngStyle]="{color:colorElem}">This is a Blue Heading</h1>
+  <!-- ngClass -->
+  <h1 [ngClass]="{'back-color':title=='my-app'}">This is a Blue Heading</h1>
+</div>
+<router-outlet></router-outlet>

@@ -1,12 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>Name:{{name | uppercase }}</h1>
-  <h1>DOB:{{dateOfBirth| date:'short' }}</h1>
+  <!-- <h1>Name:{{name | uppercase | decorator:'+':'*' }}</h1>
+  <h1>DOB:{{dateOfBirth| date:'short' }}</h1>  -->
 
   <!-- <h1> -->
   <!-- <input type="text" [value]="title" (input)="setInput($event)" /> -->
   <!-- <input type="text" [value]="title" (input)="title=$event.target.value" /> -->
-  <input type="text" appHighlight [(ngModel)]="title" />
+  <!-- <input type="text" appHighlight [(ngModel)]="title" /> -->
 
   <!-- <input [ngModel]="title" (ngModelChange)="title = $event" />
 
@@ -16,22 +16,24 @@
     </div> -->
   <!-- </h1> -->
   <!-- Structural Directive -->
-  Array:{{ arrayElem }}
+  <!-- Array:{{ arrayElem }} -->
   <!-- ngFor -->
-  <div *ngFor="let elem of arrayElem">
-    <!-- <h2>{{ elem }}</h2> -->
-    <!-- <input [(ngModel)]="elem" /> -->
-    <input appHighlight value="{{ elem }}" />
+  <!-- <div *ngFor="let elem of arrayElem"> -->
+  <!-- <h2>{{ elem }}</h2> -->
+  <!-- <input [(ngModel)]="elem" /> -->
+  <!-- <input appHighlight value="{{ elem }}" />
     {{ elem }}
-  </div>
+  </div> -->
   <!-- ngIf -->
-  <div *ngIf="title == 'my-app'">
+  <!-- <div *ngIf="title == 'my-app'">
     <h2>Sample Content</h2>
-  </div>
+  </div> -->
   <!-- Attribute Directive -->
   <!-- ngStyle -->
-  <h1 [ngStyle]="{color:colorElem}">This is a Blue Heading</h1>
+  <!-- <h1 [ngStyle]="{color:colorElem}">This is a Blue Heading</h1> -->
   <!-- ngClass -->
-  <h1 [ngClass]="{'back-color':title=='my-app'}">This is a Blue Heading</h1>
+  <!-- <h1 [ngClass]="{'back-color':title=='my-app'}">This is a Blue Heading</h1> -->
+  <app-employee-list></app-employee-list>
+
 </div>
 <router-outlet></router-outlet>

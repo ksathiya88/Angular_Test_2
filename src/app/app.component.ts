@@ -11,6 +11,9 @@ export class AppComponent {
 
   arrayElem: string[] = ["a", "b", "c", "d"];
 
+  name = "abc";
+  dateOfBirth: Date = new Date();
+
   printHello = () => {
     console.log("print hello");
     this.colorElem = "red";

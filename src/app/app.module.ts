@@ -4,9 +4,10 @@ import { NgModule } from "@angular/core";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HighlightDirective } from "./directive/highlight.directive";
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HighlightDirective],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,9 +1,12 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
+  <h1>Name:{{name | uppercase }}</h1>
+  <h1>DOB:{{dateOfBirth| date:'short' }}</h1>
+
   <!-- <h1> -->
   <!-- <input type="text" [value]="title" (input)="setInput($event)" /> -->
   <!-- <input type="text" [value]="title" (input)="title=$event.target.value" /> -->
-  <input type="text" [(ngModel)]="title" />
+  <input type="text" appHighlight [(ngModel)]="title" />
 
   <!-- <input [ngModel]="title" (ngModelChange)="title = $event" />
 
@@ -18,7 +21,7 @@
   <div *ngFor="let elem of arrayElem">
     <!-- <h2>{{ elem }}</h2> -->
     <!-- <input [(ngModel)]="elem" /> -->
-    <input value="{{ elem }}" />
+    <input appHighlight value="{{ elem }}" />
     {{ elem }}
   </div>
   <!-- ngIf -->

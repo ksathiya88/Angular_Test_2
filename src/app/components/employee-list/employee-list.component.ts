@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { DeleteServiceService } from "src/app/service/delete-service.service";
 
 @Component({
   selector: "app-employee-list",
@@ -6,6 +7,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./employee-list.component.css"]
 })
 export class EmployeeListComponent implements OnInit {
+  deleteService: DeleteServiceService;
   employees = [
     {
       key: 1,
@@ -46,7 +48,19 @@ export class EmployeeListComponent implements OnInit {
     }
   ];
 
-  constructor() {}
+  constructor(deleteService: DeleteServiceService) {
+    this.deleteService = deleteService;
+  }
 
   ngOnInit() {}
+
+  deleteEmployee(key: number) {
+    // console.log("deleteEmployee111111", key);
+    // const item = this.employees.find(item1 => {
+    //   return item1.key === key;
+    // });
+    // this.employees.splice(this.employees.indexOf(item), 1);
+    // return;
+    this.deleteService.deleteFromList(this.employees, key);
+  }
 }

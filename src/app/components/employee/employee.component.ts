@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
   selector: "app-employee",
@@ -6,8 +6,14 @@ import { Component, OnInit, Input } from "@angular/core";
   styleUrls: ["./employee.component.css"]
 })
 export class EmployeeComponent implements OnInit {
-  @Input() employee: any;
+  @Input() employee;
+  @Output() deleteEvent: EventEmitter<number> = new EventEmitter<number>();
   constructor() {}
 
   ngOnInit() {}
+
+  deleteFn(key: number) {
+    console.log("employee object", key);
+    this.deleteEvent.emit(key);
+  }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { EmployeeModel } from "src/app/model/EmployeeModel";
 
 @Component({
   selector: "app-employee",
@@ -6,7 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
   styleUrls: ["./employee.component.css"]
 })
 export class EmployeeComponent implements OnInit {
-  @Input() employee;
+  @Input() employee: EmployeeModel;
   @Output() deleteEvent: EventEmitter<number> = new EventEmitter<number>();
   constructor() {}
 

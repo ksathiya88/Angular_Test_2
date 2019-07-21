@@ -1,5 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { DeleteServiceService } from "src/app/service/delete-service.service";
+import { HttpClient } from "@angular/common/http";
+import { EmployeeServiceService } from "src/app/api/employee.service";
+import { IEmployeeDTO } from "src/app/api/employee.dto";
+import { EmployeeModel } from "src/app/model/EmployeeModel";
 
 @Component({
   selector: "app-employee-list",
@@ -8,51 +12,29 @@ import { DeleteServiceService } from "src/app/service/delete-service.service";
 })
 export class EmployeeListComponent implements OnInit {
   deleteService: DeleteServiceService;
-  employees = [
-    {
-      key: 1,
-      name: "ABC",
-      date_of_birth: "10/10/2010",
-      position_held: "Manager"
-    },
-    {
-      key: 2,
-      name: "John",
-      date_of_birth: "10/10/2010",
-      position_held: "Manager",
-      member: "golden"
-    },
-    {
-      key: 3,
-      name: "Michael",
-      date_of_birth: "10/10/2010",
-      position_held: "Manager"
-    },
-    {
-      key: 4,
-      name: "Michael",
-      date_of_birth: "10/10/2010",
-      position_held: "Manager"
-    },
-    {
-      key: 5,
-      name: "Michael",
-      date_of_birth: "10/10/2010",
-      position_held: "Manager"
-    },
-    {
-      key: 6,
-      name: "Michael",
-      date_of_birth: "10/10/2010",
-      position_held: "Manager"
-    }
-  ];
+  employees: Array<EmployeeModel> = [];
 
-  constructor(deleteService: DeleteServiceService) {
+  constructor(
+    deleteService: DeleteServiceService,
+    public employeeService: EmployeeServiceService
+  ) {
     this.deleteService = deleteService;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.employeeService
+      .getEmployees()
+      .subscribe((employeeDtos: Array<IEmployeeDTO>) => {
+        this.employees = employeeDtos.map(empDto => {
+          return EmployeeModel.fromDTO(empDto);
+        });
+      });
+
+    // console.log(
+    //   "Observables",
+    //   this.http.get("http://localhost:8081/getEmployees")
+    // );
+  }
 
   deleteEmployee(key: number) {
     // console.log("deleteEmployee111111", key);

@@ -9,6 +9,7 @@ import { DecoratorPipe } from "./pipes/decorator.pipe";
 import { EmployeeListComponent } from "./components/employee-list/employee-list.component";
 import { EmployeeComponent } from "./components/employee/employee.component";
 import { DeleteServiceService } from "./service/delete-service.service";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { DeleteServiceService } from "./service/delete-service.service";
     EmployeeListComponent,
     EmployeeComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

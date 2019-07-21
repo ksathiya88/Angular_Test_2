@@ -21,7 +21,7 @@ export class EmployeeListComponent implements OnInit {
     this.deleteService = deleteService;
   }
 
-  ngOnInit() {
+  refreshEmployees() {
     this.employeeService
       .getEmployees()
       .subscribe((employeeDtos: Array<IEmployeeDTO>) => {
@@ -29,6 +29,10 @@ export class EmployeeListComponent implements OnInit {
           return EmployeeModel.fromDTO(empDto);
         });
       });
+  }
+
+  ngOnInit() {
+    this.refreshEmployees();
 
     // console.log(
     //   "Observables",
@@ -43,6 +47,13 @@ export class EmployeeListComponent implements OnInit {
     // });
     // this.employees.splice(this.employees.indexOf(item), 1);
     // return;
-    this.deleteService.deleteFromList(this.employees, key);
+    // this.deleteService.deleteFromList(this.employees, key);
+    this.employeeService
+      .deleteEmployee(key)
+      .subscribe((employeeDtos: Array<IEmployeeDTO>) => {
+        this.employees = employeeDtos.map(empDto => {
+          return EmployeeModel.fromDTO(empDto);
+        });
+      });
   }
 }

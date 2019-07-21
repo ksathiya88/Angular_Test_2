@@ -24,4 +24,18 @@ export class EmployeeServiceService {
       })
     );
   }
+
+  deleteEmployee(key): Observable<Array<IEmployeeDTO>> {
+    return this.http
+      .delete("http://localhost:8081/deleteEmployee", { params: { key } })
+      .pipe(
+        map(response => {
+          return response as Array<IEmployeeDTO>;
+        })
+      );
+  }
+
+  addEmployee(dto: IEmployeeDTO) {
+    return this.http.put("http://localhost:8081/addEmployee", dto);
+  }
 }

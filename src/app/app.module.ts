@@ -10,7 +10,20 @@ import { EmployeeListComponent } from "./components/employee-list/employee-list.
 import { EmployeeComponent } from "./components/employee/employee.component";
 import { DeleteServiceService } from "./service/delete-service.service";
 import { HttpClientModule } from "@angular/common/http";
-import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
+import { AddEmployeeComponent } from "./components/add-employee/add-employee.component";
+import { Routes, RouterModule } from "@angular/router";
+import { HomePageComponent } from "./home-page/home-page.component";
+
+const appRoutes: Routes = [
+  {
+    path: "home",
+    component: HomePageComponent,
+    children: [
+      { path: "employeeList", component: EmployeeListComponent },
+      { path: "employeeAdd", component: AddEmployeeComponent }
+    ]
+  }
+];
 
 @NgModule({
   declarations: [
@@ -19,9 +32,16 @@ import { AddEmployeeComponent } from './components/add-employee/add-employee.com
     DecoratorPipe,
     EmployeeListComponent,
     EmployeeComponent,
-    AddEmployeeComponent
+    AddEmployeeComponent,
+    HomePageComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes)
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

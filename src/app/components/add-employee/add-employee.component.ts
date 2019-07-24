@@ -11,6 +11,7 @@ export class AddEmployeeComponent implements OnInit {
   @Output() refresh: EventEmitter<string> = new EventEmitter<string>();
 
   employeeModel: EmployeeModel;
+
   constructor(public employeeService: EmployeeServiceService) {
     this.employeeModel = new EmployeeModel();
     this.employeeModel.positionHeld = "Software Engineer";

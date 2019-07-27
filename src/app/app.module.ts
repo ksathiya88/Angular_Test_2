@@ -13,17 +13,39 @@ import { HttpClientModule } from "@angular/common/http";
 import { AddEmployeeComponent } from "./components/add-employee/add-employee.component";
 import { Routes, RouterModule } from "@angular/router";
 import { HomePageComponent } from "./home-page/home-page.component";
+import { LoginComponent } from "./components/login/login.component";
+import { ReactiveLoginComponent } from "./components/reactive-login/reactive-login.component";
 
 const appRoutes: Routes = [
+  { path: "", component: ReactiveLoginComponent },
   {
     path: "home",
     component: HomePageComponent,
     children: [
       { path: "employeeList", component: EmployeeListComponent },
-      { path: "employeeAdd", component: AddEmployeeComponent }
+      {
+        path: "employeeAdd",
+        component: AddEmployeeComponent
+      },
+      {
+        path: "employee/:key",
+        component: EmployeeComponent
+      }
     ]
   }
 ];
+
+// const appRoutes: Routes = [
+//   {
+//     path: "home",
+//     component: HomePageComponent,
+//     children: [
+//       { path: "employeeList", component: EmployeeListComponent },
+//       { path: "employeeAdd", component: AddEmployeeComponent },
+//       { path: "employee/:key", component: EmployeeComponent }
+//     ]
+//   }
+// ];
 
 @NgModule({
   declarations: [
@@ -33,11 +55,14 @@ const appRoutes: Routes = [
     EmployeeListComponent,
     EmployeeComponent,
     AddEmployeeComponent,
-    HomePageComponent
+    HomePageComponent,
+    LoginComponent,
+    ReactiveLoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes)

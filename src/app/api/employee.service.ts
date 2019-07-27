@@ -38,4 +38,14 @@ export class EmployeeServiceService {
   addEmployee(dto: IEmployeeDTO) {
     return this.http.put("http://localhost:8081/addEmployee", dto);
   }
+
+  getEmployee(key): Observable<IEmployeeDTO> {
+    return this.http
+      .get("http://localhost:8081/getEmployee", { params: { param: key } })
+      .pipe(
+        map(response => {
+          return response as IEmployeeDTO;
+        })
+      );
+  }
 }

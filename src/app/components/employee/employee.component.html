@@ -2,3 +2,5 @@
 <div><label appAppHeader>DOB:</label>&nbsp;&nbsp;{{employee.dateOfBirth | date:'longDate'}}</div>
 <div><label appAppHeader>Position Held:</label>{{employee.positionHeld | decorator:"**":employee }}</div>
 <div><input type="button" value="Delete" (click)="deleteFn(employee.key)" /></div>
+<div><button [routerLink]="['/home/employeeList']" [queryParams]="{'Edit':1}" fragment="education">GotoEmployee</button>
+</div>

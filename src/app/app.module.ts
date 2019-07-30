@@ -15,12 +15,14 @@ import { Routes, RouterModule } from "@angular/router";
 import { HomePageComponent } from "./home-page/home-page.component";
 import { LoginComponent } from "./components/login/login.component";
 import { ReactiveLoginComponent } from "./components/reactive-login/reactive-login.component";
+import { AuthGuard } from "./guards/auth.guard";
 
 const appRoutes: Routes = [
-  { path: "", component: ReactiveLoginComponent },
+  { path: "", component: LoginComponent },
   {
     path: "home",
     component: HomePageComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: "employeeList", component: EmployeeListComponent },
       {

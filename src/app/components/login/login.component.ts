@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 // import { EmployeeServiceService } from "../../api/employee/employee-service.service";
 import { Router, ActivatedRoute } from "@angular/router";
+import { AuthenticationService } from "src/app/service/authentication.service";
 // import { AuthenticationService } from "../../services";
 
 /**
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
   constructor(
     // public httpService: EmployeeServiceService,
     public route: ActivatedRoute,
-    public router: Router /// private authenticationService: AuthenticationService
+    public router: Router,
+    private authenticationService: AuthenticationService
   ) {}
 
   ngOnInit() {
@@ -30,22 +32,29 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form) {
-    console.log("template Model", form);
+    // console.log(
+    //   "template Model",
+    //   form,
+    //   form.value.username,
+    //   form.value.password
+    // );
     // // console.log("routeValue", this.route.snapshot.params.key);
     // // console.log("routeValue1", this.route.snapshot.fragment);
     // // console.log("routeValue222", this.route.snapshot.queryParams);
 
-    // this.authenticationService
-    //   .login(form.value.username, form.value.password)
-    //   // .pipe(first())
-    //   .subscribe(
-    //     data => {
-    // this.router.navigate(["home", "employeeList"]);
-    //   },
-    //   error => {
-    //     this.error = error;
-    //     // this.loading = false;
-    //   }
-    // );
+    this.authenticationService
+      .login(form.value.username, form.value.password)
+      // .pipe(first())
+      .subscribe(
+        data => {
+          console.log("user2222", data);
+          this.router.navigate(["home", "employeeList"]);
+        },
+        error => {
+          this.error = error;
+          console.log("error", this.error);
+          // this.loading = false;
+        }
+      );
   }
 }

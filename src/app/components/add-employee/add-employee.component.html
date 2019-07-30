@@ -1,17 +1,22 @@
 <div class="employee_class">
+  <!-- <form #f="ngForm"> -->
   Add Employee
   <br /><br />
-  <label for="name">Name:</label><input id="name" type="text" [(ngModel)]="employeeModel.name" />
+  <label for="name">Name:</label>
+  <input id="name" required type="text" name="name" [(ngModel)]="employeeModel.name" #name="ngModel" />
+  <span *ngIf="!name.valid && name.touched" class="help-block">Username is required</span>
   <br />
-  <label for="dob">Date Of Birth:</label><input id="dob" type="date" [(ngModel)]="employeeModel.dateOfBirth" />
+  <label for="dob">Date Of Birth:</label>
+  <input id="dob" type="date" name="dob" required [(ngModel)]="employeeModel.dateOfBirth" #dob="ngModel" />
   <br />
   <label for="position_held">Position Held:</label>
-  <select id="position_held" [(ngModel)]="employeeModel.positionHeld">
+  <select name="position_held" id="position_held" [(ngModel)]="employeeModel.positionHeld">
     <option value="Manager">Manager</option>
     <option value="Software Engineer">Software Engineer</option>
     <option value="Lead">Lead</option>
   </select>
   <br /><br />
-  <input type="button" value="Submit" (click)="submit()" />
+  <input [disabled]="!name.valid && !dob.valid" type="button" value="Submit" (click)="submit()" />
   <br />
+  <!-- </form> -->
 </div>

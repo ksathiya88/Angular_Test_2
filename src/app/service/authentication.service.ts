@@ -14,6 +14,7 @@ export class AuthenticationService {
       })
       .pipe(
         map(user => {
+          
           // login successful if there's a user in the response
           if (user) {
             // store user details and basic auth credentials in local storage

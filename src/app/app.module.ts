@@ -9,13 +9,15 @@ import { DecoratorPipe } from "./pipes/decorator.pipe";
 import { EmployeeListComponent } from "./components/employee-list/employee-list.component";
 import { EmployeeComponent } from "./components/employee/employee.component";
 import { DeleteServiceService } from "./service/delete-service.service";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AddEmployeeComponent } from "./components/add-employee/add-employee.component";
 import { Routes, RouterModule } from "@angular/router";
 import { HomePageComponent } from "./home-page/home-page.component";
 import { LoginComponent } from "./components/login/login.component";
 import { ReactiveLoginComponent } from "./components/reactive-login/reactive-login.component";
 import { AuthGuard } from "./guards/auth.guard";
+import { BasicAuthInterceptor } from './helpers/basic-auth.interceptor';
+import { LogoutComponent } from './components/logout/logout.component';
 
 const appRoutes: Routes = [
   { path: "", component: LoginComponent },
@@ -59,7 +61,8 @@ const appRoutes: Routes = [
     AddEmployeeComponent,
     HomePageComponent,
     LoginComponent,
-    ReactiveLoginComponent
+    ReactiveLoginComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +72,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
   ],
+  providers:[{ provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

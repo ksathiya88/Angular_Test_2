@@ -18,9 +18,11 @@ export class EmployeeServiceService {
   constructor(public http: HttpClient) {}
 
   getEmployees(): Observable<Array<IEmployeeDTO>> {
-    return this.http.get("http://localhost:8081/getEmployees").pipe(
+    return this.http.get("http://localhost:8081/getEmployees", { observe: 'response' }).pipe(
       map(response => {
-        return response as Array<IEmployeeDTO>;
+
+        console.log("response",response.headers);
+        return response.body as Array<IEmployeeDTO>;
       })
     );
   }

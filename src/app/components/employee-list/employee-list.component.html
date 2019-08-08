@@ -1,4 +1,10 @@
 <div class="employee_class" *ngFor="let employee1 of employees">
-  <app-employee [employee]="employee1" (deleteEvent)="deleteEmployee($event)"></app-employee>
+  <app-employee *ngIf="value1=='ggggg'" [employee]="employee1" (deleteEvent)="deleteEmployee($event)">
+      <!-- <div>Footer...</div> -->
+      Value1:<div>{{value1}}</div>
+  </app-employee>
 </div>
+
+<button (click)="onSubmit()">Submit</button>
 <!-- <app-add-employee (refresh)="refreshEmployees()"></app-add-employee> -->
+<!-- <input [(ngModel)]="employee1"> -->

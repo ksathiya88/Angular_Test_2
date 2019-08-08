@@ -13,12 +13,16 @@ import { EmployeeModel } from "src/app/model/EmployeeModel";
 export class EmployeeListComponent implements OnInit {
   deleteService: DeleteServiceService;
   employees: Array<EmployeeModel> = [];
-
+  value1="ggggg";
   constructor(
     deleteService: DeleteServiceService,
     public employeeService: EmployeeServiceService
   ) {
     this.deleteService = deleteService;
+  }
+
+  onSubmit(){
+     this.value1="hhhh";
   }
 
   refreshEmployees() {

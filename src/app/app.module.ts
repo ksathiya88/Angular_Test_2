@@ -13,14 +13,16 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AddEmployeeComponent } from "./components/add-employee/add-employee.component";
 import { Routes, RouterModule } from "@angular/router";
 import { HomePageComponent } from "./home-page/home-page.component";
-import { LoginComponent } from "./components/login/login.component";
 import { ReactiveLoginComponent } from "./components/reactive-login/reactive-login.component";
 import { AuthGuard } from "./guards/auth.guard";
 import { BasicAuthInterceptor } from './helpers/basic-auth.interceptor';
-import { LogoutComponent } from './components/logout/logout.component';
 
-const appRoutes: Routes = [
-  { path: "", component: LoginComponent },
+export const appRoutes: Routes = [ 
+  {
+    path: "",
+    loadChildren:
+      "./modules/authentication/authentication.module#AuthenticationModule"
+  }, 
   {
     path: "home",
     component: HomePageComponent,
@@ -60,9 +62,7 @@ const appRoutes: Routes = [
     EmployeeComponent,
     AddEmployeeComponent,
     HomePageComponent,
-    LoginComponent,
-    ReactiveLoginComponent,
-    LogoutComponent
+    ReactiveLoginComponent
   ],
   imports: [
     BrowserModule,
